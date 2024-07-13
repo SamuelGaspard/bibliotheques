@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "titre": "soie pour moi",
+        "auteur": "dear",
+        "Genre": "roman",
+        "Disponible": true
+    },
+    {
+        "id": 2,
+        "titre": "dit moi",
+        "auteur": "sonia",
+        "Genre": "historique",
+        "Disponible": true
+    },
+    {
+        "id": 3,
+        "titre": "python",
+        "auteur": "sonia",
+        "Genre": "livres scientifiques",
+        "Disponible": false,
+        "Archiv\u00e9": true
+    },
+    {
+        "id": 4,
+        "titre": "merveilles du monde",
+        "auteur": "sara",
+        "Genre": "revues",
+        "Disponible": true,
+        "Archiv\u00e9": false
+    },
+    {
+        "id": 5,
+        "titre": "le doit penal",
+        "auteur": "foster",
+        "Genre": "roman",
+        "Disponible": false,
+        "Archiv\u00e9": true
+    },
+    {
+        "id": 6,
+        "titre": "SQNG BLQNC",
+        "auteur": "SONIA",
+        "Genre": "historique",
+        "Disponible": true
+    }
+]
