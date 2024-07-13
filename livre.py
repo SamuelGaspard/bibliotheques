@@ -124,7 +124,7 @@ def archiverLivre(idLivre):
     for livre in livres:
         if livre["id"] == idLivre:
             livre["Archivé"] = True
-            livre["Disponible"] = False  # Assurez-vous que le livre est marqué comme non disponible
+            livre["Disponible"] = False  # Assurez-vous que le livre est marqué comme non dispon
             livre_trouve = True
             break
 
@@ -139,7 +139,7 @@ def retournererLivre(idLivre):
     for livre in livres:
         if livre["id"] == idLivre:
             livre["Archivé"] = False
-            livre["Disponible"] = True  # Assurez-vous que le livre est marqué comme non disponible
+            livre["Disponible"] = True  # Assurez-vous que le livre est marqué comme non disponi
             livre_trouve = False
             break
 
@@ -166,3 +166,92 @@ def supprimerLivre(idLivre):
   else:
     sauvegarderLivres(livres)
     print(f"Livre avec l'ID {idLivre} a été supprimé avec succès.")
+FICHIER_UTILISATEURS = 'utilisateurs.json'
+
+def chargerUtilisateurs():
+    try:
+        with open(FICHIER_UTILISATEURS, 'r', encoding='utf-8') as fichier:
+            utilisateurs = json.load(fichier)
+        return utilisateurs
+    except FileNotFoundError:
+        return []
+    except json.JSONDecodeError:
+        return []
+
+def sauvegarderUtilisateurs(utilisateurs):
+    with open(FICHIER_UTILISATEURS, 'w', encoding='utf-8') as fichier:
+        json.dump(utilisateurs, fichier, ensure_ascii=False, indent=4)
+
+def ajouterUtilisateur():
+    utilisateurs = chargerUtilisateurs()
+
+    nom = input("Entrez le nom de l'utilisateur : ").strip()
+    email = input("Entrez l'email de l'utilisateur : ").strip()
+    tel = input("Entrez le numéro de téléphone de l'utilisateur : ").strip()
+
+    utilisateur = {"nom": nom, "email": email, "tel": tel}
+    utilisateurs.append(utilisateur)
+    sauvegarderUtilisateurs(utilisateurs)
+    print("Utilisateur ajouté avec succès")
+
+def supprimerUtilisateur():
+    utilisateurs = chargerUtilisateurs()
+
+    if not utilisateurs:
+        print("Aucun utilisateur n'est enregistré")
+        return
+
+    email = input("Entrez l'email de l'utilisateur à supprimer : ").strip()
+
+    utilisateur_a_supprimer = None
+    for utilisateur in utilisateurs:
+        if utilisateur['email'] == email:
+            utilisateur_a_supprimer = utilisateur
+            break
+
+    if utilisateur_a_supprimer:
+        utilisateurs.remove(utilisateur_a_supprimer)
+        sauvegarderUtilisateurs(utilisateurs)
+        print(f"L'utilisateur avec l'email {email} a été supprimé avec succès")
+    else:
+        print(f"Aucun utilisateur trouvé avec l'email {email}")
+
+def listerUtilisateurs():
+    utilisateurs = chargerUtilisateurs()
+
+    if utilisateurs:
+        print("Liste des utilisateurs :")
+        for utilisateur in utilisateurs:
+            print(f"Nom: {utilisateur['nom']}, Email: {utilisateur['email']}, Téléphone: {utilisateur['tel']}")
+    else:
+        print("Aucun utilisateur n'est enregistré")
+
+#class Lecteur:
+def __init__(self, nom, profession, expérience, besoins, attentes):
+        self.nom = nom
+        self.profession = profession
+        self.expérience = expérience
+        self.besoins = besoins
+        self.attentes = attentes
+
+def __str__(self):
+        return f"Nom : {self.nom}, Profession : {self.profession}, Expérience : {self.expérience}, Besoins : {self.besoins}, Attentes : {self.attentes}"
+
+
+class Bibliothécaire:
+    def __init__(self):
+        self.lecteurs = []
+
+    def ajouter_lecteur(self, nom, profession, expérience, besoins, attentes):
+        for lecteur in self.lecteurs:
+            if lecteur.nom == nom:
+                print("Ce lecteur est déjà enregistré.")
+                return
+        nouvel_lecteur = Lecteur(nom, profession, expérience, besoins, attentes)
+        self.lecteurs.append(nouvel_lecteur)
+        print("Lecteur enregistré avec succès.")
+
+    def afficher_lecteurs(self):
+        for lecteur in self.lecteurs:
+            print(lecteur)
+#fonction pour authentifier 
