@@ -1,4 +1,4 @@
-from livre import ajouterLivre, validerAuteure, validerGenre, validerTitre, afficherTousLesLivres, rechercherLivres, archiverLivre,retournererLivre, supprimerLivre
+from livre import ajouterLivre, validerAuteure, validerGenre, validerTitre, afficherTousLesLivres, rechercherLivres, archiverLivre,retournererLivre, supprimerLivre,listerUtilisateurs,supprimerUtilisateur,sauvegarderUtilisateurs
 
 # ajouter livre
 # rechercher livre
@@ -11,7 +11,10 @@ def menu_principal():
     print("4. Afficher tous les livres")
     print("5. Emprunter un livre")
     print("6. Retourner un livre")
-    print("7. Quitter le programme")
+    print("7. Ajouter un utilisateur")
+    print("8. Afficher les utilisateurs")
+    print("9. Supprimer un utilisateur")
+    print("10. Quitter le progamme")
     choix = int(input("Sélectionner une option : "))
     return choix
 
@@ -50,7 +53,17 @@ def main():
             idLivre = int(input("Entrez l'ID du livre à retourner : "))
             retournererLivre(idLivre)
         elif choix == 7:
-            print("Option 7 : Quitter le programme")
+            print("option 7: Ajouter un utilisateur")
+            sauvegarderUtilisateurs()
+        elif choix == 8:
+            print("option 7: Afficher tous les  utilisateurs")
+            listerUtilisateurs()
+        elif choix == 9:
+            print("option 9: Supprimer un utilisateur")
+            supprimerUtilisateur()
+            
+        elif choix == 10:
+            print("Option 10 : Quitter le programme")
             break  # Quitter la boucle while et donc le programme
 
 if __name__ == "__main__":
